@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .button {
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            width: 250px;
+            margin: 0 auto;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .update-btn {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .view-btn {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .chart-btn {
+            background-color: #6f42c1;
+            color: white;
+        }
+
+        form button:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Management Dashboard</h2>
+        <form action="/dashboard_action" method="POST">
+            <button type="submit" name="action" value="add" class="button add-btn">Add House</button>
+            <button type="submit" name="action" value="delete" class="button delete-btn">Delete House</button>
+            <button type="submit" name="action" value="update" class="button update-btn">Update House</button>
+            <button type="submit" name="action" value="view" class="button view-btn">View House</button>
+            <button type="submit" name="action" value="charts" class="button chart-btn">View Charts</button>
+        </form>
+    </div>
+
+</body>
+</html>

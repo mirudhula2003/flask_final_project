@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View House</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"] {
+            padding: 12px;
+            width: 75%;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .flash-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .house-details {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 12px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>View House Record</h2>
+
+        <form action="{{ url_for('view_house') }}" method="post">
+            <input type="text" name="house_id" placeholder="Enter House ID" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if house %}
+            <div class="house-details">
+                <h3>House Details</h3>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <td>{{ house.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Area Type</th>
+                        <td>{{ house.area_type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Availability</th>
+                        <td>{{ house.availability }}</td>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <td>{{ house.location }}</td>
+                    </tr>
+                    <tr>
+                        <th>Size</th>
+                        <td>{{ house.size }}</td>
+                    </tr>
+                    <tr>
+                        <th>Society</th>
+                        <td>{{ house.society }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total Sqft</th>
+                        <td>{{ house.total_sqft }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bathrooms</th>
+                        <td>{{ house.bath }}</td>
+                    </tr>
+                    <tr>
+                        <th>Balconies</th>
+                        <td>{{ house.balcony }}</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>{{ house.price }}</td>
+                    </tr>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

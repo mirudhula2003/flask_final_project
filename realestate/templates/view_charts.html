@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real Estate Data Charts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #444;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Real Estate Data Analysis Charts</h2>
+
+        <label for="chartSelector">Choose a chart to display:</label>
+        <select id="chartSelector" onchange="showChart()">
+            <option value="0">Total Sqft Distribution Histogram</option>
+            <option value="1">Price Distribution Histogram</option>
+            <option value="2">Correlation Heatmap</option>
+            <option value="3">Society Distribution Bar Chart</option>
+            <option value="4">Availability Pie Chart</option>
+            <option value="5">Total Sqft vs Price Line Graph</option>
+        </select>
+
+        <div id="chartContainer" class="chart-container">
+            <h3 id="chartTitle">Total Sqft Distribution Histogram</h3>
+            <img src="{{ chart_files[0] }}" alt="Total Sqft Distribution Histogram" id="chartImage">
+        </div>
+
+        <br>
+        <a href="/admin_dashboard" class="btn">Back to Dashboard</a>
+    </div>
+
+    <script>
+        function showChart() {
+            const chartSelector = document.getElementById("chartSelector");
+            const chartIndex = chartSelector.value;
+            const chartTitle = [
+                "Total Sqft Distribution Histogram",
+                "Price Distribution Histogram",
+                "Correlation Heatmap",
+                "Society Distribution Bar Chart",
+                "Availability Pie Chart",
+                "Total Sqft vs Price Line Graph"
+            ];
+            const chartFiles = [
+                "{{ chart_files[0] }}",
+                "{{ chart_files[1] }}",
+                "{{ chart_files[2] }}",
+                "{{ chart_files[3] }}",
+                "{{ chart_files[4] }}",
+                "{{ chart_files[5] }}"
+            ];
+
+            document.getElementById("chartTitle").textContent = chartTitle[chartIndex];
+            document.getElementById("chartImage").src = chartFiles[chartIndex];
+        }
+    </script>
+
+</body>
+</html>
