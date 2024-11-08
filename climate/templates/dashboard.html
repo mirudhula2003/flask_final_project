@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .button {
+            font-size: 16px;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            color: white;
+        }
+        .button:hover {
+            background-color: #007BFF;
+        }
+        .add-btn {
+            background-color: #28a745;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+        .update-btn {
+            background-color: #ffc107;
+            color: black;
+        }
+        .view-btn {
+            background-color: #17a2b8;
+        }
+        .chart-btn {
+            background-color: #6f42c1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Management Dashboard</h2>
+        <form action="/dashboard_action" method="POST">
+            <button type="submit" name="action" value="add" class="button add-btn">Add Student</button>
+            <button type="submit" name="action" value="delete" class="button delete-btn">Delete Student</button>
+            <button type="submit" name="action" value="update" class="button update-btn">Update Student</button>
+            <button type="submit" name="action" value="view" class="button view-btn">View Student</button>
+            <button type="submit" name="action" value="charts" class="button chart-btn">View Charts</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student</title>
+    <style>
+        /* Basic styling for the form and table */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .flash-message {
+            color: red;
+            margin-bottom: 20px;
+        }
+        .student-details {
+            width: 60%;
+            border-collapse: collapse;
+        }
+        .student-details th, .student-details td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .student-details th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .student-details td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>View Student Record</h2>
+
+    <form action="{{ url_for('view_student') }}" method="post">
+        <input type="text" name="student_id" placeholder="Enter Student ID" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-message">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if student %}
+        <table class="student-details">
+            <tr>
+                <th>Field</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td><strong>ID</strong></td>
+                <td>{{ student.student_id }}</td>
+            </tr>
+            <tr>
+                <td><strong>Gender</strong></td>
+                <td>{{ student.gender }}</td>
+            </tr>
+            <tr>
+                <td><strong>Age</strong></td>
+                <td>{{ student.age }}</td>
+            </tr>
+            <tr>
+                <td><strong>Study Hours/Week</strong></td>
+                <td>{{ student.study_hours_per_week }}</td>
+            </tr>
+            <tr>
+                <td><strong>Attendance Rate</strong></td>
+                <td>{{ student.attendance_rate }}</td>
+            </tr>
+            <tr>
+                <td><strong>GPA</strong></td>
+                <td>{{ student.gpa }}</td>
+            </tr>
+            <tr>
+                <td><strong>Major</strong></td>
+                <td>{{ student.major }}</td>
+            </tr>
+            <tr>
+                <td><strong>Part-Time Job</strong></td>
+                <td>{{ student.part_time_job }}</td>
+            </tr>
+            <tr>
+                <td><strong>Extra-Curricular Activities</strong></td>
+                <td>{{ student.extra_curricular_activities }}</td>
+            </tr>
+        </table>
+    {% endif %}
+
+</body>
+</html>

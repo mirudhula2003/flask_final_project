@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Data Charts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        select {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            margin-bottom: 1.5em;
+            color: #333;
+        }
+        select:focus {
+            border-color: #6a5acd;
+            outline: none;
+        }
+        .chart {
+            display: none;
+            text-align: center;
+            margin-top: 1.5em;
+        }
+        .chart img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Student Data Analysis Charts</h2>
+
+        <label for="chart-select">Choose a chart to view:</label>
+        <select id="chart-select" onchange="showChart()">
+            <option value="">Select a chart</option>
+            <option value="age-distribution">Age Distribution Histogram</option>
+            <option value="gpa-distribution">GPA Distribution Histogram</option>
+            <option value="correlation-heatmap">Correlation Heatmap</option>
+            <option value="major-bar">Major Distribution Bar Chart</option>
+            <option value="major-pie">Major Distribution Pie Chart</option>
+            <option value="age-study">Age vs Study Hours Line Graph</option>
+        </select>
+
+        <div id="age-distribution" class="chart">
+            <h3>1. Age Distribution Histogram</h3>
+            <img src="{{ chart_files[0] }}" alt="Age Distribution Histogram">
+        </div>
+
+        <div id="gpa-distribution" class="chart">
+            <h3>2. GPA Distribution Histogram</h3>
+            <img src="{{ chart_files[1] }}" alt="GPA Distribution Histogram">
+        </div>
+
+        <div id="correlation-heatmap" class="chart">
+            <h3>3. Correlation Heatmap</h3>
+            <img src="{{ chart_files[2] }}" alt="Correlation Heatmap">
+        </div>
+
+        <div id="major-bar" class="chart">
+            <h3>4. Major Distribution Bar Chart</h3>
+            <img src="{{ chart_files[3] }}" alt="Major Distribution Bar Chart">
+        </div>
+
+        <div id="major-pie" class="chart">
+            <h3>5. Major Distribution Pie Chart</h3>
+            <img src="{{ chart_files[4] }}" alt="Major Distribution Pie Chart">
+        </div>
+
+        <div id="age-study" class="chart">
+            <h3>6. Age vs Study Hours Line Graph</h3>
+            <img src="{{ chart_files[5] }}" alt="Age vs Study Hours Line Graph">
+        </div>
+    </div>
+
+    <script>
+        function showChart() {
+            const charts = document.querySelectorAll('.chart');
+            charts.forEach(chart => chart.style.display = 'none');
+            const selectedChart = document.getElementById(document.getElementById('chart-select').value);
+            if (selectedChart) selectedChart.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
